@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MapsRoutingModule } from './maps-routing.module';
@@ -9,6 +9,9 @@ import { FullScreenPageComponent } from './pages/full-screen-page/full-screen-pa
 import { MarkersPageComponent } from './pages/markers-page/markers-page.component';
 import { PropertiesPageComponent } from './pages/properties-page/properties-page.component';
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
+
+import { defineElement } from '@lordicon/element';
+import lottie from 'lottie-web';
 
 
 @NgModule({
@@ -23,7 +26,12 @@ import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.
   ],
   imports: [
     CommonModule,
-    MapsRoutingModule
-  ]
+    MapsRoutingModule,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MapsModule { }
+export class MapsModule {
+  constructor() {
+    defineElement(lottie.loadAnimation)
+  }
+}
