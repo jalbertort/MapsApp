@@ -13,6 +13,11 @@ import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.
 import { defineElement } from '@lordicon/element';
 import lottie from 'lottie-web';
 
+import * as maptiler from '@maptiler/sdk';
+import '@maptiler/sdk/dist/maptiler-sdk.css';
+import { environment } from '../../environments/environment';
+(maptiler as any).config.apiKey = environment.maptiler_key;
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,7 @@ import lottie from 'lottie-web';
     FullScreenPageComponent,
     MarkersPageComponent,
     PropertiesPageComponent,
-    ZoomRangePageComponent
+    ZoomRangePageComponent,
   ],
   imports: [
     CommonModule,
