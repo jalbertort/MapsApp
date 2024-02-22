@@ -10,16 +10,16 @@ export class FullScreenPageComponent implements AfterViewInit, OnDestroy{
   map: Map | undefined;
 
   @ViewChild('map')
-  private mapContainer?: ElementRef<HTMLElement>;
+  private mapDiv?: ElementRef<HTMLElement>;
 
   ngAfterViewInit(): void {
 
-    if( !this.mapContainer ) throw 'El elemento html no fue encontrado';
+    if( !this.mapDiv ) throw 'El elemento html no fue encontrado';
 
     const initialState = { lng: -69.73 , lat: 18.32, zoom: 6 };
 
      const map = new Map({
-      container: this.mapContainer.nativeElement,
+      container: this.mapDiv.nativeElement,
       style: MapStyle.STREETS,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom
