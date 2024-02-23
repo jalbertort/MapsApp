@@ -1,11 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-
-import * as maptiler from '@maptiler/sdk';
-
-import '@maptiler/sdk/dist/maptiler-sdk.css';
-import { environment } from '../../../../environments/environment';
-
-(maptiler as any).config.apiKey = environment.maptiler_key;
+import { Map, MapStyle } from '@maptiler/sdk';
 
 @Component({
   templateUrl: './full-screen-page.component.html',
@@ -13,18 +7,21 @@ import { environment } from '../../../../environments/environment';
 })
 export class FullScreenPageComponent implements AfterViewInit, OnDestroy{
 
-  map: maptiler.Map | undefined;
+  map: Map | undefined;
 
   @ViewChild('map')
-  private mapContainer!: ElementRef<HTMLElement>;
+  private mapDiv?: ElementRef<HTMLElement>;
 
   ngAfterViewInit(): void {
 
-    const initialState = { lng: -69.73 , lat: 18.32, zoom: 6 };
+    if( !this.mapDiv ) throw 'El elemento html no fue encontrado';
 
-     this.map = new maptiler.Map({
-      container: this.mapContainer.nativeElement,
-      style: maptiler.MapStyle.STREETS,
+    // const initialState = { lng: -71.414, lat: 18.664, zoom: 7.46 };
+    const initialState = { lng: -70.258, lat: 18.881, zoom: 8.03 };
+
+     const map = new Map({
+      container: this.mapDiv.nativeElement,
+      style: MapStyle.STREETS,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom
     });
