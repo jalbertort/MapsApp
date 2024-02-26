@@ -1,6 +1,7 @@
 # Mapsapp
 
-No usar directamente en AngularCLI (a menos que estén creadas las variables de entorno), ya que las variables de entorno se crean basados en el .env
+No usar directamente en AngularCLI (a menos que estén creadas las variables de entorno), ya que las variables de entorno se crean basados en el .env.
+Deber registrarte en esta pagina de mapas https://www.maptiler.com/ para crear tu llave de mapas t cargarla en el .env.
 
 ## Pasos:
 
